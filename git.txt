@@ -1,0 +1,58 @@
+VCS (Version Control System)
+
+Локальный репозиторий
+
+git --version
+git --help
+
+git init   - создали репозиторий (один раз)
+
+git status
+
+git add -A
+		-A, --all - добавляет файлы, папки и вложенные элементы
+		main.py  - добавляет указанный файл
+		. - добавляет файлы из текущей директории
+
+(один раз)		
+git config --global user.name 'your_name'
+git config --global user.email 'your_email'
+
+git commit -m "first commit"
+
+Файл .gitignore
+
+git branch  - просмотр веток
+git branch test - создать новую ветку
+git branch -D test - удалать ветку
+
+git branch readme
+git checkout readme
+
+git checkout master
+git checkout -b new  - создали ветку и сразу на нее перешли
+
+readme.md
+
+master            readme
+	все  изменения    все
+	-readme.md        -readme.md				
+
+git merge readme
+
+git log
+
+Удаленный репозиторий
+
+Win + R => control
+Диспечер учетных данных
+учетных данных Windows
+Добавить общие учетные данные
+
+
+https://github.com
+git remote add origin https://github.com/Helen-prog/Python228.git
+git push -u origin master
+
+git push
+
