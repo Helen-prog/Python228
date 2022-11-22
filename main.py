@@ -3568,9 +3568,45 @@ import re
 # print(m[1])
 # print(m[2])
 # print(m[0])
+# print(re.search(reg, s).group(1))
 
 
-print("Внесли изменения!!!")
+# text = """
+# Самара
+# Москва
+# Тверь
+# Уфа
+# Казань
+# """
+# count = 0
+#
+#
+# def replace_find(m):
+#     global count
+#     count += 1
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
+#
+#
+# print(re.sub(r"\s*(\w+)\s*", replace_find, text))
 
 
+# s = "<p>Изображение <img src='bg.jpg'> - фон страницы</p>"
+# reg = r'<img\s+[^>]*src=([\'"])(.+)\1>'
+# print(re.findall(reg, s))
 
+# s = "<p>Изображение <img src='bg.jpg'> - фон страницы</p>"
+# reg = r'<img\s+[^>]*src=(?P<q001>[\'"])(.+)(?P=q001)>'
+# print(re.findall(reg, s))
+
+# s = "Самолет прилетает 10/23/2023. Будем рады вас видеть после 10/24/2023."
+# reg = r'(\d{2})/(\d{2})/(\d{4})'
+# print(re.findall(reg, s))
+# print(re.sub(reg, r'\2.\1.\3', s))
+
+# s = "google.com and google.ru and yandex.ru"
+# reg = r'(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
+# print(re.findall(reg, s))
+# print(re.sub(reg, r"http://\1", s))
+
+r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
+r'^((\+?7\s((\d{3})|\(\d{3}\))\s(\d{3})(\s|\-)\d{2})(\s|\-)\d{2})|\+?\d{11}'
