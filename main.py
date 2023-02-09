@@ -1046,7 +1046,7 @@
 # print(min(lst))
 # print(max(lst))
 
-from random import *
+# from random import *
 
 # lst = [randint(0, 100) for i in range(10)]
 # max_ = max(lst)
@@ -1232,7 +1232,7 @@ from random import *
 #     matrix[i], matrix[i + 1] = matrix[i + 1], matrix[i]
 # print(matrix)
 
-import math
+# import math
 
 # print(dir(math))
 # num1 = math.sqrt(2)
@@ -1247,7 +1247,7 @@ import math
 # print('Площадь окружности с радиусом', radius, "=>", math.pi * radius ** 2)
 # print(round((2 * math.pi * radius), 2))
 
-import time
+# import time
 
 # second = time.time()
 # print("Секунды с начала эпохи:", second)
@@ -3392,7 +3392,7 @@ import time
 
 # Регулярные выражения
 
-import re
+# import re
 
 # from re import *
 
@@ -3967,9 +3967,8 @@ import re
 
 # Модуль OS и OS.PATH
 
-import os
-import os.path
-
+# import os
+# import os.path
 
 # print("Текущая директория: ", os.getcwd())  # D:\Python228
 #
@@ -6210,6 +6209,38 @@ import os.path
 # p1.info()
 
 
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+
+# class Dec:
+#     def __init__(self, fn):
+#         self.fn = fn
+#
+#     def __call__(self, *args, **kwargs):
+#         print("*" * 20)
+#         self.fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @Dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+#
+# p1 = Person("Виталий", "Карасев")
+# Person.info(p1)
+
+
 # Дескрипторы
 # __get__, __set__, __delete__
 
@@ -6251,32 +6282,999 @@ import os.path
 # p.name.set("Oleg")
 # print(p.name.get(), p.surname.get())
 
-class ValidateString:
-    def __set_name__(self, owner, name):
-        print("Set_name")
-        self.__name = name
+# class ValidateString:
+#     def __set_name__(self, owner, name):
+#         print("Set_name")
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         print("__get__")
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         print("__set__")
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidateString()
+#     surname = ValidateString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person("Ivan", "Petrov")
+# p.surname = "Oleg"
+# print(p.name)
+# print(p.surname)
 
-    def __get__(self, instance, owner):
-        print("__get__")
-        return instance.__dict__[self.__name]
+# class Power:
+#     def __init__(self, degree):
+#         self.degree = degree
+#
+#     def __call__(self, fn):
+#         def wrap(a, b):
+#             print('Результат:', fn(a, b) ** self.degree)  #
+#
+#         return wrap
 
-    def __set__(self, instance, value):
-        print("__set__")
-        if not isinstance(value, str):
-            raise ValueError(f"{self.__name} должно быть строкой")
-        instance.__dict__[self.__name] = value
+# def power(degree):
+#     def call(fn):
+#         def wrap(a, b):
+#             print('Результат:', fn(a, b) ** degree)
+#
+#         return wrap
+#
+#     return call
+#
+#
+# @power(3)
+# def func(a, b):
+#     return a * b
+#
+#
+# func(2, 2)
+
+# test = Power(3)
+# test1 = test(func)  # __call__
+# test1(2, 2)  # wrap
+
+# class NonNegative:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError(f'Значение {self.__name} должно быть положительным')
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Order:
+#     price = NonNegative()
+#     qty = NonNegative()
+#
+#     def __init__(self, name, price, qty):
+#         self.name = name
+#         self.price = price
+#         self.qty = qty
+#
+#     def total(self):
+#         return self.price * self.qty
+#
+#
+# a = Order('apple', 5, 10)
+# print(a.total())
+# a.price = -20
+# a.qty = 10
+# print(a.price)
+# print(a.total())
 
 
-class Person:
-    name = ValidateString()
-    surname = ValidateString()
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Координата {coord} должно быть целым числом')
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         instance.__dict__[self.name] = value
 
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Координата {coord} должно быть целым числом')
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#     def __delete__(self, instance):
+#         # del instance.__dict__[self.name]
+#         delattr(instance, self.name)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# del p1.z
+# print(p1.__dict__)
+# print(p1.y)
 
 
-p = Person("Ivan", "Petrov")
-p.surname = "Oleg"
-print(p.name)
-print(p.surname)
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# print(getattr(p1, "x"))
+# setattr(p1, "x", 6)
+# p1.x = 7
+# print(p1.__dict__)
+# print(p1.x)
+# print(hasattr(p1, "z"))
+
+
+# class MyClass:
+#     pass
+#
+#
+# obj = MyClass()
+# obj.a = 1
+# obj.b = 2
+# obj.i = 3
+# obj.ireal = 3.5
+# obj.integer = 4
+# obj.z = 5
+#
+#
+# def incIntsI(obj):
+#     for name in obj.__dict__.keys():
+#         if name.startswith('i'):
+#             val = getattr(obj, name)
+#             if isinstance(val, int):
+#                 setattr(obj, name, val + 1)
+#
+#
+# print(obj.__dict__)
+# incIntsI(obj)
+# print(obj.__dict__)
+
+# class Integer:
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+# print(p1.y)
+
+
+# Создание модулей
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+# from geometry import rect, sq, trian
+# # import geometry
+# # from geometry import *
+#
+# r1 = rect.Rectangle(1, 2)
+# r2 = rect.Rectangle(3, 4)
+#
+# s1 = sq.Square(10)
+# s2 = sq.Square(20)
+#
+# t1 = trian.Triangle(1, 2, 3)
+# t2 = trian.Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.get_perimetr())
+
+
+# from car import electrocar
+#
+#
+# def run():
+#     e_car = electrocar.ElectroCar("Tesla", "T", 2020, 50000)
+#     e_car.model = "S"
+#     e_car.show_car()
+#     e_car.description_battery()
+#     print(__name__)
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+
+# if __name__ == '__main__':
+#     e_car = electrocar.ElectroCar("Tesla", "T", 2020, 50000)
+#     e_car.show_car()
+#     e_car.description_battery()
+
+# import pickle
+
+# filename = "basket1.txt"
+#
+# shop_list = {
+#     "фрукты": ["яблоки", "манго"],
+#     "овощи": ["морковь"],
+#     "бюджет": 1000
+# }
+#
+# # with open(filename, "wb") as fh:
+# #     pickle.dump(shop_list, fh)
+#
+#
+# with open(filename, 'rb') as fh:
+#     shop = pickle.load(fh)
+#
+# print(shop)
+
+
+# class Test:
+#     num = 35
+#     st = "Привет"
+#     lst = [1, 2, 3]
+#     d = {"first": "a", "second": 2}
+#     tpl = (22, 33)
+#
+#     def __str__(self):
+#         return f"Число: {Test.num}\nСтрока: {Test.st}\nСписок: {Test.lst}\nСловарь: {Test.d}\nКортеж: {Test.tpl}"
+#
+#
+# obj = Test()
+#
+# my_obj = pickle.dumps(obj)
+# print(f"Сериализация в строку: \n{my_obj}\n")
+#
+# l_obj = pickle.loads(my_obj)
+# print(f"Десериализация в строку: \n{l_obj}\n")
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+# print(item3.__dict__)
+# print(item3)
+# import json
+# #
+# data = {
+#     'name': 'Игорь',
+#     'hobbies': ('running', 'sky diving'),
+#     True: 20,
+#     'children': [
+#         {
+#             'firstName': 'Alice',
+#             'age': 5
+#         },
+#         {
+#             'firstName': 'Bob',
+#             'age': 8
+#         }
+#     ]
+# }
+# # #
+# # # with open("data_file.json", "w") as fw:
+# # #     json.dump(data, fw, indent=4)
+# # #
+# # #
+# # # with open("data_file.json", "r") as fw:
+# # #     data = json.load(fw)
+# # #     print(data)
+# #
+# json_string = json.dumps(data, ensure_ascii=False)
+# # print(type(json_string))
+# data = json.loads(json_string)
+# print(data)
+
+
+# Создать класс (любой). Свойства класса сохранить в JSON объект
+
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int) or coord < 0:
+#             raise TypeError(f"Координата {coord} должна быть целым положительным числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         setattr(instance, self.name, value)
+#
+#
+# class Triangle:
+#     a = Integer()
+#     b = Integer()
+#     c = Integer()
+#
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#
+# tr1 = Triangle(2, "0", 6)
+# print(tr1.__dict__)
+
+# import json
+#
+#
+# class OtherBox:
+#
+#     def __init__(self, *args, **kwargs):
+#         self.base = {
+#             'name': 'Павел',
+#             'surname': 'Anonim',
+#             'age': 18,
+#             'id': 1
+#         }
+#
+#     def show_info(self):
+#         with open("data_file.json", 'w') as fw:
+#             json.dump(self.base, fw)
+#         with open("data_file.json", 'r') as fw:
+#             data = json.load(fw)
+#         print(data)
+#
+#
+# a = OtherBox()
+# a.show_info()
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         # self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} "
+#
+#
+# data = Test2()
+# # d = data.__str__()
+# json_string = json.dumps(data.__dict__)  # , default=str
+# # print(type(json_string))
+# data = json.loads(json_string)
+# print(data)
+
+#
+# import json
+#
+#
+# class Test2:
+#     count = 0
+#
+#     def __init__(self):
+#         self.a = 35
+#         self.b = 'test'
+#         # self.c = lambda x: x*x
+#         self.count += 1
+#
+#     def __str__(self):
+#         return f'{self.a}, {self.b}, {Test2.count}'
+#
+#
+# item1 = Test2()
+# item2 = json.dumps(item1.__dict__)
+# item3 = json.loads(item2)
+# print('Запись в память:', item3)
+#
+# with open('test2.json', 'w') as fw:
+#     json.dump(Test2().__str__(), fw)
+#
+# with open('test2.json', 'r') as fw:
+#     data = json.load(fw)
+#     print('Запись в файл:', data)
+
+
+# import json
+# from random import choice
+#
+#
+# def get_person():
+#     name = ''
+#     tel = ''
+#
+#     letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letter)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person, tel
+#
+#
+# def write_json(person_dict, num):  # {}
+#     try:
+#         data = json.load(open('persons.json'))  # [{}, {}, {}, {}, {}]
+#     except FileNotFoundError:
+#         data = {}
+#
+#     data[num] = person_dict  # [{}, {}, {}, {}, {}, {}]
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)  # [{}, {}, {}, {}, {}, {}]
+#
+#
+# for i in range(5):
+#     write_json(get_person()[0], get_person()[1])  # {"name": "dadcfec", "tel": "3910610858"}
+
+
+# import json
+#
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.marks:
+#         #     # a += f"{i}, "
+#         #     a += str(i) + ", "
+#         a = ", ".join(map(str, self.marks))  # self.marks = ['5', '4', '3', '4', '5', '3']
+#         return f"Студент: {self.name}: {a}"  # [:-2]
+#
+#     def add_marks(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     @staticmethod
+#     def dump_to_json(stud, filename):
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = []
+#
+#         data.append({"name": stud.name, "marks": stud.marks})
+#         with open(filename, 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def load_to_file(filename):
+#         with open(filename, 'r') as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         # a = ''
+#         # for i in self.students:
+#         #     a += str(i) + "\n"
+#         a = '\n'.join(map(str, self.students))
+#         return f"Группа: {self.group}\n{a}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#     @staticmethod
+#     def dump_group(file, group):
+#         try:
+#             data = json.load(open(file))
+#         except FileNotFoundError:
+#             data = []
+#
+#         with open(file, 'w') as f:
+#             stud_list = []
+#             for i in group.students:
+#                 stud_list.append([i.name, i.marks])
+#             data.append(stud_list)
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def upload_journal(file):
+#         with open(file, 'r') as f:
+#             print(json.load(f))
+#
+#
+#
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_marks(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # Student.dump_to_json(st1, 'student.json')
+# # Student.load_to_file('student.json')
+# # print(st1)
+# # print(st1.average_mark())
+# st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+# # Student.dump_to_json(st2, 'student.json')
+# # Student.load_to_file('student.json')
+# st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+# sts = [st1, st2]
+# my_group = Group(sts, "ГК Python")
+# # # print(my_group)
+# # # print()
+# # my_group.add_student(st3)
+# # # print(my_group)
+# # # print()
+# # my_group.remove_student(1)
+# # print(my_group)
+# group22 = [st3]
+# # print()
+# my_group2 = Group(group22, "ГК Web")
+# # Group.dump_group('group.json', my_group)
+# # Group.dump_group('group.json', my_group2)
+# Group.upload_journal('group.json')
+# # print(my_group2)
+# # print()
+# # Group.change_group(my_group, my_group2, 0)
+# # print(my_group)
+# # print()
+# print(my_group2)
+
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# # print(todos[:10])
+# # print(type(todos))
+#
+# todos_by_user = {}  # {1: 11, 2: 1}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1  # todos_by_user[2] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1  # todos_by_user[1] = 1
+# print(todos_by_user)
+#
+#
+# def ind(x):
+#     return x[1]
+#
+#
+# top_users = sorted(todos_by_user.items(), key=ind, reverse=True)  # key=lambda x: x[1]
+# print(top_users)
+#
+# max_complete = top_users[0][1]
+# print(max_complete)
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:
+#         break
+#     users.append(str(user))
+#
+# # print(users)
+# max_users = " and ".join(users)
+#
+# s = "s" if len(users) > 1 else ""
+# print(f"user{s} {max_users} completed {max_complete} TODOs")
+#
+#
+# def keep(tod):
+#     is_complete = tod['completed']
+#     has_max_count = str(tod['userId']) in users
+#     return is_complete and has_max_count
+#
+#
+# with open('filtered_data_file.json', 'w') as f:
+#     filtered_todos = list(filter(keep, todos))
+#     json.dump(filtered_todos, f, indent=2)
+#
+# with open('filtered_data_file.json', 'r') as f:
+#     data = json.load(f)
+#     print(data)
+
+
+# csv (Comma Separated Values) - переменные, разделенные запятыми.
+
+import csv
+
+# with open("data.csv", 'r') as r_file:
+#     file_reader = csv.reader(r_file, delimiter=";")
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"    {row[0]} - {row[1]}. Родился в {row[2]} году.")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+# with open("data.csv", 'r') as r_file:
+#     field_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=field_names)
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"    {row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+
+# with open('student.csv', mode="w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "11", "18"])
+
+
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+#
+# with open('data_sw.csv', mode="w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open('data_sw.csv') as f:
+#     print(f.read())
+
+
+# with open('stud.csv', mode="w") as f:
+#     names = ["Имя", "Возраст"]
+#     file_writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Саша", "Возраст": "6"})
+#     file_writer.writerow({"Имя": "Маша", "Возраст": "15"})
+#     file_writer.writerow({"Имя": "Вова", "Возраст": "14"})
+
+
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open('dictwriter.csv', 'w') as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+
+# Парсинг
+
+# from bs4 import BeautifulSoup
+# import re
+
+
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois").text.strip()
+#     if "Copywriter" in whois:
+#         return tag
+#     return None
+
+# def get_salary(s):
+#     pattern = r"\d+"
+#     # res = re.findall(pattern, s)[0]
+#     res = re.search(pattern, s).group()
+#     print(res)
+#
+#
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+#
+# salary = soup.find_all("div", {"data-set": "salary"})
+# for i in salary:
+#     get_salary(i.text)
+
+# copywriter = []
+# row = soup.find_all('div', class_="row")
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+# print(copywriter)
+
+
+# row = soup.find('div', class_="name").text
+# row = soup.find_all('div', class_="name")
+# print(row)
+# for r in row:
+#     print(r.text)
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# print(row)
+# row = soup.find_all("div", {"data-set": "salary"})
+# print(row)
+# row = soup.find("div", string="Alena").parent.parent
+# row = soup.find("div", string="Alena").find_parent(class_="row")
+# print(row)
+# row = soup.find("div", id="whois3").find_next_sibling()
+# row = soup.find("div", id="whois3").find_previous_sibling()
+# print(row)
+
+
+# import requests
+
+
+# r = requests.get("https://ru.wordpress.org/")
+# print(r.headers)
+# print(r.headers['content-type'])
+# print(r.content)
+# print(r.text)
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     res = re.sub(r"\D+", "", s)
+#     return res
+#
+#
+# def write_csv(data):
+#     with open("plugins.csv", "a") as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("section", class_="plugin-section")[3]
+#     plugins = p1.find_all('article')
+#
+#     for plugin in plugins:
+#         name = plugin.find("h3").text
+#         url = plugin.find("h3").find("a").get("href")  # ["href"]
+#         rating = plugin.find("span", class_="rating-count").find("a").text
+#         r = refined(rating)
+#         data = {'name': name, "url": url, "rating": r}
+#         write_csv(data)
+#     # return len(plugins)
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+# import requests
+# from bs4 import BeautifulSoup
+# import csv
+# import re
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def refine_snippet(s):
+#     res = [ord(c) for c in s if ord(c) < 9000]
+#     res1 = ''.join([chr(c) for c in res])
+#     return res1
+#
+#
+# def write_csv(data):
+#     with open("plugins1.csv", "a", encoding="utf-8-sig") as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data['name'],
+#                          data['url'],
+#                          data['snippet'],
+#                          data['cy']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     elements = soup.find_all("article", class_="plugin-card")
+#     for el in elements:
+#         try:
+#             name = el.find("h3").text
+#         except ValueError:
+#             name = ""
+#
+#         try:
+#             url = el.find("h3").find("a").get("href")
+#         except ValueError:
+#             url = ""
+#
+#         try:
+#             snippet = el.find("div", class_="entry-excerpt").text.strip()
+#             snippet1 = refine_snippet(snippet)
+#         except ValueError:
+#             snippet1 = ""
+#         # print(snippet1)
+#
+#         try:
+#             c = el.find("span", class_="tested-with").text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             cy = ""
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snippet': snippet1,
+#             'cy': cy
+#         }
+#
+#         write_csv(data)
+#
+#
+# def main():
+#     for i in range(26):
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+# from parsers import Parsers
+#
+#
+# def main():
+#     pars = Parsers("https://www.ixbt.com/live/index/news/", "new.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+
+
