@@ -7285,13 +7285,30 @@ import sqlite3 as sq
 #
 # con.close()
 
-with sq.connect('profile.db') as con:
+# with sq.connect('profile.db') as con:
+#     cur = con.cursor()
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # data BLOB
+#     # )""")
+#     cur.execute("DROP TABLE users")
+
+
+with sq.connect('users.db') as con:
     cur = con.cursor()
-    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    cur.execute("""
+    DROP TABLE person_table
+    """)
+
+
+    # cur.execute("""
+    # CREATE TABLE IF NOT EXISTS person(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
     # name TEXT NOT NULL,
-    # summa REAL,
-    # data BLOB
+    # phone BLOB NOT NULL DEFAULT '+79090000000',
+    # age INTEGER NOT NULL CHECK(age>15 AND age<70),
+    # email TEXT UNIQUE
     # )""")
-    cur.execute("DROP TABLE users")
 

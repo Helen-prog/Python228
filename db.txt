@@ -9,3 +9,45 @@ SQLite
 
 SELECT [ALL|DISTINCT] {*|столбец1[,столбец2]}
 FROM таблица [, таблица2]
+WHERE условие
+	=, ==, <>, !=, >, >=, <, <=
+	выражение [NOT] BETWEEN начальное_значение AND конечное_значение
+	выражение [NOT] LIKE шаблон_строки
+		% - любое количество символов
+		_ - один символ
+	выражение [NOT] GLOB регулярное_выражение
+		* - любое количество символов
+		? - один символ
+		. - любой одиночный символ
+		[abc] - один из заданных символов
+		[a-z0-9] - диапазон заданных символ
+		^ - [^abc] - все кроме заданных символов		
+	выражение IS [NOT] NULL 
+	выражение [NOT] IN (набор значений)
+ORDER BY имя_поля [ASC|DESC]
+
+Переименовать таблицу
+ALTER TABLE person
+RENAME TO person_table
+
+Добавление столбца
+ALTER TABLE person_table
+ADD COLUMN address TEXT NOT NULL DEFAULT "street"
+
+переименование столбца
+ALTER TABLE person_table
+RENAME COLUMN address TO home_address
+
+удаление столбца
+ALTER TABLE person_table
+DROP COLUMN home_address
+
+Удаление таблицы
+DROP TABLE person_table
+
+Добавление новой строки
+INSERT INTO имя_таблицы [(столбец_1[, столбец_n])]
+VALUES(значение_1[, значение_n])
+		
+	
+	
