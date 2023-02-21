@@ -7296,12 +7296,11 @@ import sqlite3 as sq
 #     cur.execute("DROP TABLE users")
 
 
-with sq.connect('users.db') as con:
-    cur = con.cursor()
-    cur.execute("""
-    DROP TABLE person_table
-    """)
-
+# with sq.connect('users.db') as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     DROP TABLE person_table
+#     """)
 
     # cur.execute("""
     # CREATE TABLE IF NOT EXISTS person(
@@ -7311,4 +7310,22 @@ with sq.connect('users.db') as con:
     # age INTEGER NOT NULL CHECK(age>15 AND age<70),
     # email TEXT UNIQUE
     # )""")
+
+with sq.connect('db_3.db') as con:
+    cur = con.cursor()
+    cur.execute("""
+    SELECT *
+    FROM T1
+    ORDER BY FName
+    LIMIT 2, 5
+    """)
+
+    res2 = cur.fetchmany(4)
+    res = cur.fetchone()
+    res1 = cur.fetchall()
+    print(res2)
+    print(res)
+    print(res1)
+    # for res in cur:
+    #     print(res)
 
