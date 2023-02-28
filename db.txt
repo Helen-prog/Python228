@@ -7,7 +7,7 @@ SQLite
 
 *.db, *.db3, *.sqlite, *.sqlite3
 
-SELECT [ALL|DISTINCT] {*|столбец1[,столбец2]}
+SELECT [ALL|DISTINCT] {*|столбец1[,столбец2]} 
 FROM таблица [, таблица2]
 WHERE условие
 	=, ==, <>, !=, >, >=, <, <=
