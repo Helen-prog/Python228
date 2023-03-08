@@ -24,6 +24,8 @@ WHERE условие
 		^ - [^abc] - все кроме заданных символов		
 	выражение IS [NOT] NULL 
 	выражение [NOT] IN (набор значений)
+GROUP BY (группировать по)
+HAVING (условие)
 ORDER BY имя_поля [ASC|DESC]
 
 Переименовать таблицу
@@ -71,14 +73,86 @@ LIMIT [смещение,] количество_строк
 разработчики логической БД
 разработчики физической БД
 
+Функции агрегирования
+
+SUM  (только с числами)
+AVG  (только с числами)
+COUNT 
+MIN
+MAX
 
 
+SELECT COUNT(Client) as [Количество клиентов]
+SELECT COUNT(Client) AS 'Количество клиентов'
+SELECT COUNT(Client) AS Количество
+SELECT COUNT(Client) Количество
 
 
+pip install jinja2
+
+{{ }} - выражение для вставки конструкции Python в шаблон
+{% %} - спецификатор шаблона
+
+{# #} - блок комментариев
+# ## - строковый комментарий
+
+{% for <выражение> %}
+<тело цикла>
+{% endfor %}
+
+{% if <условие> %}
+
+{% elif <условие> %}
+
+{% else %}
+
+{% endif %}
+
+Макроопределения (=функция)
+
+{% call[(параметры)] <вызов макроса> %}
+<вложенный шаблон>
+{% endcall %}
+
+templates
+	index.html
+	
+	header.html
+	main.html
+	footer.html
+	dialogs.html
+	
+	page.html
+	about.html
+	
+	
+{% include <путь к файлу шаблона> %}
+
+pip install Flask
+
+flsk
+	flsite.py
+	
+http://127.0.0.1:5000/
+http://127.0.0.1:5000/index
+http://127.0.0.1:5000/about
 
 
-
-
+templates
+		index.html
+		about.html
+		base.html
+		contact.html
+		
+static
+	css
+		style.css
+	
+int - должны присутствовать только цифры
+float - можно записывать число с плавающей точкой
+path - можно использовать любые допустимые символы
+		URL плюс символ слеша
+		
 
 
 	
