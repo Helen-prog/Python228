@@ -3,6 +3,10 @@
 {% block content %}
 {{ super() }}
 
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{ cat }}">{{ msg }}</div>
+{% endfor %}
+
 <form action="/contact" method="post">
     <p>Имя: <input type="text" name="username" required></p>
     <p>Email: <input type="email" name="email" required></p>
