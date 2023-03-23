@@ -143,6 +143,8 @@ templates
 		about.html
 		base.html
 		contact.html
+		page404.html
+		login.html
 		
 static
 	css
@@ -153,6 +155,56 @@ float - можно записывать число с плавающей точ�
 path - можно использовать любые допустимые символы
 		URL плюс символ слеша
 		
+flash()
+get_flashed_messages()
+
+import os
+os.urandom(20).hex()
 
 
-	
+from flsk.flsite import create_db
+create_db()
+
+
+pip install django	
+
+first
+
+cd first
+
+django-admin startproject password_generator_project
+
+python manage.py runserver
+
+python manage.py runserver 1.2.3.4:4000
+
+python manage.py startapp generator
+
+templates
+	generator
+		home.html
+		
+http://127.0.0.1:8000/?length=2
+http://127.0.0.1:8000/?length=3
+
+
+python manage.py collectstatic
+
+second
+
+django-admin startproject personal_portfolio
+
+python manage.py startapp skills
+python manage.py startapp blog
+
+pip install Pillow
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+python manage.py createsuperuser
+
+
+
+

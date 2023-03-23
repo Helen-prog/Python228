@@ -39,3 +39,39 @@ body{
     font-weight: bold;
     color:brown;
 }
+
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+p>a{
+    text-decoration: none;
+    color: brown;
+}
+
+li>p, li div{
+    border: 1px solid #CCC;
+    padding: 10px 20px;
+}
+p.title{
+    margin: 0;
+    font-weight: bold;
+    background: gold;
+}
+p.title a{
+    display: block;
+}
+
+p.title:hover{
+    background: orange;
+}
+
+.annonce{
+    margin-top: -1px;
+    margin-bottom: 40px;
+    background: #FFF;
+}
+
+
