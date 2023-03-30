@@ -206,5 +206,17 @@ python manage.py migrate
 python manage.py createsuperuser
 
 
+django-admin startproject todos
+python manage.py startapp todo
+
+http://127.0.0.1:8000/signup/
+http://127.0.0.1:8000/current/
 
 
+<div class="center">
+ <h1>Система для обслуживания клиентов</h1>
+ <p>Развивайте свой бизнес с помощью продвинутой, но простой в использовании платформы Upservice</p>
+ <h2>Для чего нужен Upservice</h2>
+ <p>Upservice – это платформа для контроля и управления вашим бизнесом.</p>
+ <p>Помогает находить слабые стороны в работе сотрудников и улучшать уровень обслуживания клиентов.</p>
+</div>
