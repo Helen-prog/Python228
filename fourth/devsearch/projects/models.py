@@ -1,7 +1,9 @@
 from django.db import models
+from users.models import Profile
 
 
 class Project(models.Model):
+    owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     featured_image = models.ImageField(upload_to='projects/%Y/%m/%d/', default="default.jpg")

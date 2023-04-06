@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/first/password_generator_project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/second/personal_portfolio" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/third/todos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fourth/devsearch" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
