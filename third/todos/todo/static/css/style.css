@@ -108,3 +108,24 @@ input{
 a b{
     color: orangered;
 }
+
+
+.register ul{
+    margin-bottom: -16px;
+}
+.register li{
+    box-shadow: none;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.helptext{
+    font-size: 14px;
+}
+.register label{
+    color: teal;
+    font-size: 18px;
+    font-weight: bold;
+}
+.register button{
+    margin-top: 10px;
+}

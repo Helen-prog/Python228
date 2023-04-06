@@ -14,6 +14,7 @@
             <li class="logo">Пользователь: {{ user.username }}</li>
             <li><a href="{% url 'createtodo' %}">Создать</a></li>
             <li><a href="{% url 'currenttodos' %}">Актуальные</a></li>
+            <li><a href="{% url 'completedtodos' %}">Выполненные</a></li>
             <li>
                 <form action="{% url 'logoutuser' %}" method="post">
                     {% csrf_token %}
@@ -27,6 +28,7 @@
 <div class="menu">
     <div class="wrap">
         <ul>
+            <li class="logo"><a href="{% url 'home' %}">UpService</a></li>
             <li><a href="{% url 'signupuser' %}">Зарегистрироваться</a></li>
             <li><a href="{% url 'loginuser' %}">Войти</a></li>
         </ul>
