@@ -240,6 +240,20 @@ static
 	images
 	styles
 	uikit
+	
+	
+ForeingKey - один ко многим
+ManyToManyField - многие ко многим
+OneToOneField - один к одному
+
+python manage.py shell
+
+from projects.models import Project
+
+
+python manage.py startapp users
+
+
 
 
 
