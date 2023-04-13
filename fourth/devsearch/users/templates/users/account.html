@@ -1,0 +1,100 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+
+  <!-- Main Section -->
+  <main class="settingsPage profile my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <div class="card text-center">
+            <div class="card__body dev">
+              <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
+              <img class="avatar avatar--xl dev__avatar" src="{{ profile.profile_image.url }}" />
+              <h2 class="dev__name">{{ profile.name }}</h2>
+              <p class="dev__title">{{ profile.short_intro }}</p>
+
+              <ul class="dev__social">
+                {% if profile.social_github %}
+                <li>
+                  <a title="Github" href="{{ profile.social_github }}" target="_blank"><i class="fa fa-github-square">Github</i></a>
+                </li>
+                {% endif %}
+
+                {% if profile.social_youtube %}
+                <li>
+                  <a title="Youtube" href="{{ profile.social_youtube }}" target="_blank"><i class="fa fa-youtube">Youtube</i></a>
+                </li>
+                {% endif %}
+
+                {% if profile.social_website %}
+                <li>
+                  <a title="Personal Website" href="{{profile.social_website}}" target="_blank"><i class="fa fa-sitemap">Website</i></a>
+                </li>
+                {% endif %}
+              </ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="column column--2of3">
+          <div class="devInfo">
+            <h3 class="devInfo__title">About Me</h3>
+            <p class="devInfo__about">
+              {{ profile.bio }}
+            </p>
+          </div>
+          <div class="settings">
+            <h3 class="settings__title">Skills</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i> Add Skill</a>
+          </div>
+
+          <table class="settings__table">
+            {% for skill in skills %}
+            <tr>
+              <td class="settings__tableInfo">
+                <h4>{{ skill.name }}</h4>
+                <p>
+                  {{ skill.description }}
+                </p>
+              </td>
+              <td class="settings__tableActions">
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
+                  Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+
+          <div class="settings">
+            <h3 class="settings__title">Projects</h3>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i> Add Project</a>
+          </div>
+
+          <table class="settings__table">
+            {% for project in profile.project_set.all %}
+            <tr>
+              <td class="settings__thumbnail">
+                <a
+                        href="{% url 'project' project.id %}"><img src="{{ project.featured_image.url }}"
+                                                                 alt="Project Thumbnail" /></a>
+              </td>
+              <td class="settings__tableInfo">
+                <a href="single-project.html">{{ project.title }}</a>
+                <p>
+                 {{ project.description|slice:'150' }}
+                </p>
+              </td>
+              <td class="settings__tableActions">
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
+                  Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
