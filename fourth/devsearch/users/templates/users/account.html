@@ -8,7 +8,7 @@
         <div class="column column--1of3">
           <div class="card text-center">
             <div class="card__body dev">
-              <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account' %}"><i class="im im-edit"></i> Edit</a>
               <img class="avatar avatar--xl dev__avatar" src="{{ profile.profile_image.url }}" />
               <h2 class="dev__name">{{ profile.name }}</h2>
               <p class="dev__title">{{ profile.short_intro }}</p>
@@ -45,7 +45,8 @@
           </div>
           <div class="settings">
             <h3 class="settings__title">Skills</h3>
-            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i> Add Skill</a>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-skill' %}"><i class="im im-plus"></i> Add
+              Skill</a>
           </div>
 
           <table class="settings__table">
@@ -68,7 +69,9 @@
 
           <div class="settings">
             <h3 class="settings__title">Projects</h3>
-            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i> Add Project</a>
+            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-project' %}"><i
+                    class="im im-plus"></i> Add
+              Project</a>
           </div>
 
           <table class="settings__table">
@@ -86,8 +89,10 @@
                 </p>
               </td>
               <td class="settings__tableActions">
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
+                <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-project' project.id %}"><i
+                        class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-project' project.id %}"><i
+                        class="im im-x-mark-circle-o"></i>
                   Delete</a>
               </td>
             </tr>

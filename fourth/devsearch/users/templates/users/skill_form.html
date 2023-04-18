@@ -1,0 +1,16 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+
+<h1>Create Skill</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    {{ field.label }}
+    {{ field }}
+    {% endfor %}
+
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
