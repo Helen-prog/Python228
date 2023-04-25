@@ -6,11 +6,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 from django.contrib.auth.decorators import login_required
+from .utils import search_profiles
 
 
 def profiles(request):
-    prof = Profile.objects.all()
-    context = {'profiles': prof}
+    prof, search_query = search_profiles(request)
+    context = {'profiles': prof, 'search_query': search_query}
     return render(request, 'users/index.html', context)
 
 
@@ -109,6 +110,45 @@ def edit_account(request):
 
 @login_required(login_url='login')
 def create_skill(request):
+    profile = request.user.profile
     form = SkillForm()
+
+    if request.method == 'POST':
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.owner = profile
+            skill.save()
+            messages.success(request, f'Skill was added successfully!')
+            return redirect('account')
     context = {'form': form}
     return render(request, 'users/skill_form.html', context)
+
+
+@login_required(login_url='login')
+def update_skill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+    form = SkillForm(instance=skill)
+
+    if request.method == 'POST':
+        form = SkillForm(request.POST, instance=skill)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Skill was updated successfully!')
+            return redirect('account')
+    context = {'form': form}
+    return render(request, 'users/skill_form.html', context)
+
+
+@login_required(login_url='login')
+def delete_skill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+
+    if request.method == 'POST':
+        skill.delete()
+        messages.success(request, f'Skill was deleted successfully!')
+        return redirect('account')
+    context = {'object': skill}
+    return render(request, 'projects/delete.html', context)
