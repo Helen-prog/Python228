@@ -2,36 +2,17 @@ from django.shortcuts import render, redirect
 from .models import Project
 from .forms import ProjectForm
 from django.contrib.auth.decorators import login_required
-from .utils import search_projects
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .utils import search_projects, paginate_projects
 
 
 def projects(request):
     pr, search_query = search_projects(request)
-    page = request.GET.get('page')
-    results = 3
-    paginator = Paginator(pr, results, allow_empty_first_page=False)
-
-    # try:
-    #     pr = paginator.page(page)
-    # except PageNotAnInteger:
-    #     page = 1
-    #     pr = paginator.page(page)
-    # except EmptyPage:
-    #     page = paginator.num_pages
-    #     pr = paginator.page(page)
-    pr = paginator.get_page(page)
-
-    left_index = int(page) - 4
-
-    right_index = int(page) + 5
-
-    custom_range = range(left_index, right_index)
+    custom_range, pr = paginate_projects(request, pr, 3)
 
     context = {
         'projects': pr,
         'search_query': search_query,
-        'paginator': paginator,
+        # 'paginator': paginator,
         'custom_range': custom_range
     }
     return render(request, "projects/projects.html", context)
