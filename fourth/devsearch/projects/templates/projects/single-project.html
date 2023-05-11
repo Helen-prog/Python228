@@ -40,42 +40,45 @@
               Vote{{project.vote_total|pluralize:'s'}}
             </h5>
 
-            <form class="form" action="#" method="POST">
+            {% if request.user.profile.id in project.reviewers %}
+            <p>You have already submitted your review for this project</p>
+            <!-- Вы уже оставляли свой отзыв об этом проекте -->
+            {% elif request.user.profile == project.owner %}
+            <p>You cannot review your own work</p>
+            <!-- Вы не можете прокомментировать свою работу -->
+            {% elif request.user.is_authenticated %}
+            <form class="form" action="{% url 'project' project.id %}" method="POST">
+              {% csrf_token %}
+              {% for field in form %}
               <!-- Textarea -->
               <div class="form__field">
-                <label for="formInput#textarea">Comments: </label>
-                <textarea class="input input--textarea" name="message" id="formInput#textarea"
-                  placeholder="Write your comments here..."></textarea>
+                <label for="formInput#textarea">{{ field.label }} </label>
+                {{ field }}
               </div>
+              {% endfor %}
               <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
             </form>
+            {% else %}
+            <a href="{% url 'login' %}">Please login to leave a review</a>
+            <!-- Пожалуйста, войдите, что бы оставить отзыв -->
+            {% endif %}
             <div class="commentList">
+            {% for review in project.review_set.all %}
+              {% if review.body %}
               <div class="comment">
-                <a href="profile.html">
+                <a href="{% url 'user_profile' review.owner.id %}">
                   <img class="avatar avatar--md"
-                    src="https://pbs.twimg.com/profile_images/1335382240931368961/b3wSZKj4_400x400.jpg" alt="user" />
+                    src="{{ review.owner.profile_image.url }}" alt="user" />
                 </a>
                 <div class="comment__details">
-                  <a href="profile.html" class="comment__author">Sulamita Ivanov</a>
+                  <a href="{% url 'user_profile' review.owner.id %}" class="comment__author">{{ review.owner.name }}</a>
                   <p class="comment__info">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias numquam perferendis
-                    mollitia minus minima exercitationem possimus ab deserunt qui, soluta iusto doloribus eveniet
-                    similique consequuntur ratione, dignissimos ut magni laborum quo.
+                   {{ review.body|linebreaksbr }}
                   </p>
                 </div>
               </div>
-              <div class="comment">
-                <a href="profile.html">
-                  <img class="avatar avatar--md" src="https://avatars.githubusercontent.com/u/33843378" alt="user" />
-                </a>
-                <div class="comment__details">
-                  <a href="profile.html" class="comment__author">Dennis Ivanov</a>
-                  <p class="comment__info">
-                    Consectetur adipisicing elit. Reprehenderit alias numquam perferendis mollitia minus minima
-                    exercitationem possimus ab deserunt qui, ratione, dignissimos ut magni laborum quo.
-                  </p>
-                </div>
-              </div>
+              {% endif %}
+            {% endfor %}
             </div>
           </div>
         </div>

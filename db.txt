@@ -259,7 +259,10 @@ profile_form.html
 
 utils.py
 
+pagination.html
 
+?search_query=web
+?page=2
 
 
 

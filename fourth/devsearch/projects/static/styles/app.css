@@ -536,8 +536,8 @@ img {
 }
 
 .comments .form label {
-  position: absolute;
-  margin: -9999px;
+  /* position: absolute;
+  margin: -9999px; */
 }
 
 .commentList {
