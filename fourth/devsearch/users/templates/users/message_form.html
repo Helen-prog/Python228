@@ -1,0 +1,45 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+{% load static %}
+
+<main class="formPage my-xl">
+        <div class="content-box">
+            <div class="formWrapper">
+                <a class="backButton" href="{% url 'user_profile' recipient.id %}"><img
+                        src="{% static 'images/left.png' %}"
+                                                                            alt="left"></a>
+                <br>
+
+                <form class="form" method="POST">
+                    {% csrf_token %}
+
+                    {% if request.user.is_authenticated == False %}
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">{{ form.name.label }} </label>
+                        {{ form.name }}
+                    </div>
+
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">{{ form.email.label }}</label>
+                        {{ form.email }}
+                    </div>
+                    {% endif %}
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">{{ form.subject.label }} </label>
+                        {{ form.subject }}
+                    </div>
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">{{ form.body.label }} </label>
+                        {{ form.body }}
+                    </div>
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
