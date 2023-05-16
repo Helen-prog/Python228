@@ -264,8 +264,24 @@ pagination.html
 ?search_query=web
 ?page=2
 
+fifth
+
+django-admin startproject programming_blog
+python manage.py startapp blog
+
+templates
+	blog
+		base.html
+		index.html
+		
+python manage.py createsuperuser
 
 
+str - любая не пустая строка, исключая символ /
+int - любое положительное число, включая 0
+slug - латиница, дефис и подчеркивание
+uuid - цифры, латинские символы, дефис
+path - любая не пустая строка, включая символ /
 
 
 

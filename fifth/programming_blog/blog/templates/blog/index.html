@@ -1,4 +1,19 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<h1>Главная страница</h1>
+<h1>{{ title }}</h1>
+<ul>
+    {% for p in posts %}
+    <li>
+        <p class="first">Категория: {{p.cat}}</p>
+        <div class="text">
+            {% if p.photo %}
+            <img src="{{ p.photo.url }}" class="image" alt="">
+            {% endif %}
+            <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
+            <p>{{ p.content|linebreaks|truncatewords:50 }}</p>
+        </div>
+        <p class="date">Дата: {{ p.time_update|date:"d-m-Y H:i:s" }}</p>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
