@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+{% load static %}
+
 <h1>{{ title }}</h1>
 <ul>
     {% for p in posts %}
@@ -8,9 +10,11 @@
         <div class="text">
             {% if p.photo %}
             <img src="{{ p.photo.url }}" class="image" alt="">
+            {% else %}
+            <img src="{% static 'blog/default.jpg' %}" class="image" alt="">
             {% endif %}
             <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
-            <p>{{ p.content|linebreaks|truncatewords:50 }}</p>
+            <p>{{ p.content|safe|truncatewords:50 }}</p>
         </div>
         <p class="date">Дата: {{ p.time_update|date:"d-m-Y H:i:s" }}</p>
     </li>

@@ -284,7 +284,10 @@ uuid - цифры, латинские символы, дефис
 path - любая не пустая строка, включая символ /
 
 
+templatetags
+	blog_tags.py
 
+pip install django-simple-captcha
 
 
 
