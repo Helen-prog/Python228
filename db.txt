@@ -289,6 +289,42 @@ templatetags
 
 pip install django-simple-captcha
 
+https://youtu.be/A24YgL0rpWw
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A24YgL0rpWw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+git init
+git add -A
+git commit -m "blog"
+
+1) перенос файлов с репозитория на хостинг
+
+git clone https://github.com/Helen-prog/blog.git
+
+ls - просмотр содержимого
+cd blog
+
+2) создание виртуального окружения
+
+mkvirtualenv --python=/usr/bin/python3.9 blogvenv
+
+deactivate - выход из виртуального окружения
+workon blogvenv - для повторого входа
+
+pwd - путь к папке с загруженным репозиторием 
+
+3) установка модулей
+
+pip install django
+pip install pillow
+pip install django-simple-captcha
+pip install django-ckeditor
+
+4) Создаем web-приложение
+
+/home/HelenKozovyakina/.virtualenvs/blogvenv
+
+python manage.py collectstatic
 
 
 
