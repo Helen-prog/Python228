@@ -15,7 +15,7 @@
   <body>
   <div class="bg-light">
 	<nav class="navbar navbar-light bg-light container">
-	  <a class="logo-top" href="#">
+	  <a class="logo-top" href="{% url 'home' %}">
 	    <img src="{% static 'cms/logo.png' %}" class="d-inline-block align-top" alt="" loading="lazy">
 
 	  </a>
@@ -34,7 +34,7 @@
   <footer class="bg-light">
   		<div class="container">
   			<nav class="navbar navbar-light container">
-			    <a class="logo-bottom" href="#">
+			    <a class="logo-bottom" href="{% url 'home' %}">
 			    	<img src="{% static 'cms/logo.png' %}" class="d-inline-block align-top" alt="" loading="lazy">
 			    </a>
 	  			<div class="contact-top">

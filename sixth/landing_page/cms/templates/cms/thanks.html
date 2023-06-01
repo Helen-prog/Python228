@@ -1,0 +1,17 @@
+{% extends 'cms/base.html' %}
+
+{% block content %}
+
+<!-- Спасибо -->
+  	<section>
+  		<div class="container">
+  			<div class="thank">
+				<h1 style="text-align: center">{{ name }}<br>Спасибо за заявку!<br>
+					<a href="{% url 'home' %}" style="font-size:18px">На главную</a>
+				</h1>
+			</div>
+  		</div>
+  	</section>
+  	<!-- Спасибо -->
+
+{% endblock %}
