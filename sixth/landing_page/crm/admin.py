@@ -17,6 +17,7 @@ class OrderAdm(admin.ModelAdmin):
     list_editable = ('order_status', 'order_phone')
     fields = ('id', 'order_status', 'order_dt', 'order_name', 'order_phone')
     readonly_fields = ('id', 'order_dt')
+    list_per_page = 10
     inlines = [Comment]
 
 

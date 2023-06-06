@@ -332,3 +332,37 @@ python manage.py startapp cms
 python manage.py startapp price
 python manage.py startapp crm
 
+test_telegram_message_bot
+
+5949853694:AAEKlJFylPxsSiZL-PrYfyva2zqNRG6kYwQ
+
+https://api.telegram.org/bot<token>/НАЗВАНИЕ_МЕТОДА
+
+
+https://api.telegram.org/bot5949853694:AAEKlJFylPxsSiZL-PrYfyva2zqNRG6kYwQ/sendMessage?chat_id=-997940109&text=текст
+
+https://t.me/+qPLos-6sLQViZGMy
+
+
+/my_id@get_id_bot
+
+@get_id_bot
+
+-997940109
+
+
+https://api.telegram.org/bot5949853694:AAEKlJFylPxsSiZL-PrYfyva2zqNRG6kYwQ/sendMessage?chat_id=-997940109&text=текст
+
+
+https://api.telegram.org/bot5949853694:AAEKlJFylPxsSiZL-PrYfyva2zqNRG6kYwQ/sendMessage?chat_id=-997940109&text=текст
+
+
+
+https://api.telegram.org/bot5949853694:AAEKlJFylPxsSiZL-PrYfyva2zqNRG6kYwQ/sendMessage?chat_id=-997940109&text=%D1%82%D0%B5%D0%BA%D1%81%D1%82
+
+python manage.py startapp telebot
+
+pip install requests
+
+
+sendmessage.py
